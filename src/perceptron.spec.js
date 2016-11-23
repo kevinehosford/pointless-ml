@@ -1,6 +1,6 @@
 const Perceptron = require('./perceptron');
 
-describe('Perceptron', () => {
+describe('perceptron', () => {
   it('should exist', () => {
     expect(Perceptron).toBeDefined();
   });
