@@ -1,0 +1,15 @@
+{
+  "name": "machina",
+  "version": "1.0.0",
+  "description": "JS ML Lib",
+  "main": "index.js",
+  "scripts": {
+    "test:watch": "npm run test -- --watch",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^17.0.3"
+  }
+}
