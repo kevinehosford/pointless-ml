@@ -4,10 +4,10 @@ const { add, sub, scale, dot, fmt} = require('../src/vector');
 const { train, guess, activate } = require('../src/perceptron');
 
 const trainingData = [
-  [[0,0], 0],
-  [[0,1], 1],
-  [[1,0], 1],
-  [[1,1], 1]
+  [[0.0,0.0,1], 0.0],
+  [[0.0,1.0,1], 1.0],
+  [[1.0,0.0,1], 1.0],
+  [[1.0,1.0,1], 1.0]
 ];
 
 const getRandomElement = arr => {
@@ -18,9 +18,10 @@ const rate = 0.2;
 let weights = [
     Math.random(),
     Math.random(),
+    Math.random(),
 ];
 
-const iterations = 100;
+const iterations = 500;
 
 for (let i = 0; i < iterations; i++) {
     let [input, output] = getRandomElement(trainingData);
