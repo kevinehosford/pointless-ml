@@ -23,7 +23,7 @@ const fmt = vector => {
 
 const opMatrices = op => (prev, next) => {
   if (prev.length !== next.length) {
-    throw new Exception('Matrix length mismatch');
+    throw new Error('Matrix length mismatch');
   }
 
   if (prev.length === 1) {
@@ -58,7 +58,31 @@ const sub = (...rest) => {
 };
 
 const dot = (...rest) => {
+  const vectors = map(rest, toVector);
 
+  const res = reduce(vectors, (prev, next) => {
+    if (prev.length !== next.length) {
+      throw new Error('Vector length mismatch');
+    }
+
+    return map(prev, (item, i) => {
+      return item *= next[i];
+    });
+  });
+
+  return reduce(res, (prev, next) => {
+    return prev + next;
+  });
+};
+
+const scale = (v, ...rest) => {
+  return reduce(
+    rest,
+    (prev, scalar) => {
+      return map(prev, item => item * scalar);
+    },
+    v
+  );
 };
 
 module.exports = {
@@ -67,4 +91,6 @@ module.exports = {
   add,
   sub,
   fmt,
+  dot,
+  scale,
 };

@@ -16,15 +16,19 @@ const guess = (weights, input) => {
   return dot(weights, input);
 };
 
-const train = (rate, weights, input, output) => {
+const train = (rate, weights, input, expected) => {
   // guess
   const g = guess(weights, input);
 
   // get error
-  const e = error(output, g);
+  const e = error(expected, g);
 
   // returns new weights
-  return add(weights, scale(rate * error, input))
+  return add(weights, scale(input, rate, e))
 };
 
-
+module.exports = {
+  train,
+  guess,
+  activate,
+};

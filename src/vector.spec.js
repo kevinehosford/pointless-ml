@@ -6,7 +6,9 @@ const {
   toVectors,
   add,
   sub,
-  fmt
+  fmt,
+  dot,
+  scale
 } = Vector;
 
 describe('Vector', () => {
@@ -59,6 +61,18 @@ describe('Vector', () => {
       const str = fmt([2,2,2]);
       console.log(str);
       expect(str).toEqual('');
+    });
+  });
+
+  describe('dot', () => {
+    it('should dot product the vectors', () => {
+      expect(dot([1,2,3,4], [1,2,3,4])).toEqual(1+4+9+16);
+    });
+  });
+
+  describe('scale', () => {
+    it('should scale a vector', () => {
+      expect(scale([1,2,3,4], 2, 3)).toEqual([6, 12, 18, 24]);
     });
   });
 });
