@@ -3,7 +3,7 @@
 const { dot, add, scale } = require('./vector');
 
 const activate = guess => {
-  return guess > 0.0 ? 1.0 : 0.0;
+  return guess > 0 ? 1 : 0;
 };
 
 const error = (expected, guess) => {
