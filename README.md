@@ -1,0 +1,1 @@
+A (pointless) machine learning library built with javascript.
