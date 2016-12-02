@@ -1,13 +1,14 @@
 {
   "name": "machina",
-  "version": "1.0.0",
-  "description": "JS ML Lib",
+  "version": "0.1.0",
+  "description": "Pointless JS Machine Learning",
   "main": "index.js",
   "scripts": {
     "test:watch": "npm run test -- --watch",
     "test": "jest"
   },
-  "author": "",
+  "author": "kevin hosford",
+  "private": true,
   "license": "ISC",
   "devDependencies": {
     "jest": "^17.0.3"
