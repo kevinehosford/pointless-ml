@@ -3,6 +3,10 @@ const {
   reduce,
 } = require('./array');
 
+const {
+  compose,
+} = require('./util');
+
 const toVector = item => (item instanceof Array ? item : [item]);
 
 const toVectors = (...items) => map(items, toVector);
@@ -23,6 +27,8 @@ const fmt = vector => {
 
 const opMatrices = op => (prev, next) => {
   if (prev.length !== next.length) {
+    console.log(prev);
+    console.log(next);
     throw new Error('Matrix length mismatch');
   }
 
@@ -40,6 +46,8 @@ const opMatrices = op => (prev, next) => {
 
 const addMatrices = opMatrices((prev, next) => prev + next);
 const subMatrices = opMatrices((prev, next) => prev - next);
+const multMatrices = opMatrices((prev, next) => prev * next);
+const divMatrices = opMatrices((prev, next) => prev / next);
 
 const add = (...rest) => {
   const vectors = map(rest, toVector);
@@ -54,6 +62,22 @@ const sub = (...rest) => {
 
   return reduce(vectors, (prev, next) => {
     return subMatrices(prev, next);
+  });
+};
+
+const mult = (...rest) => {
+  const vectors = map(rest, toVector);
+
+  return reduce(vectors, (prev, next) => {
+    return multMatrices(prev, next);
+  });
+};
+
+const div = (...rest) => {
+  const vectors = map(rest, toVector);
+
+  return reduce(vectors, (prev, next) => {
+    return divMatrices(prev, next);
   });
 };
 
@@ -90,6 +114,8 @@ module.exports = {
   toVectors,
   add,
   sub,
+  mult,
+  div,
   fmt,
   dot,
   scale,
